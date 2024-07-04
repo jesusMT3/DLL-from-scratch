@@ -9,7 +9,7 @@ Otherwise, print the number
 from typing import List
 
 import numpy as np
-from DLL.train import train
+from DLL.train import train, print_train
 from DLL.nn import NeuralNet
 from DLL.layers import Linear, Tanh
 from DLL.optim import SGD 
@@ -46,7 +46,8 @@ net = NeuralNet([
     Linear(input_size = 50, output_size = 4)
 ])
 
-train(net, inputs, targets, num_epochs= 5000, optimizer = SGD(lr = 0.001))
+data = train(net, inputs, targets, num_epochs= 5000, optimizer = SGD(lr = 0.001))
+print_train(data)
 
 for x in range(1, 101):
     predicted = net.forward(binary_encode(x))
